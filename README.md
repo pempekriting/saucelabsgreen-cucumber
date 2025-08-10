@@ -98,11 +98,6 @@ To run specific scenarios or features, check the `tags` configuration in `src/te
 
 Refer to your feature files in `src/test/resources/features/` to choose the appropriate tags.
 
-## Writing Tests
-- Feature files are in `src/test/resources/features/`
-- Step definitions are in `src/test/java/steps/`
-- Use the Page Object Model for new screens/pages in `src/main/java/org/saucelabs/pages/`
-
 ## Reporting
 - **Allure**: Rich, interactive test reports (`mvn allure:serve`)
 - **Cucumber**: HTML, XML, and JSON reports in `target/cucumber-report/`
