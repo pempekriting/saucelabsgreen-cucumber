@@ -1,0 +1,45 @@
+package org.saucelabs.pages;
+
+import com.github.javafaker.Faker;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.saucelabs.context.TestContext;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.FluentWait;
+
+import java.time.Duration;
+import java.util.Locale;
+
+public class BasePage {
+
+    private final AndroidDriver androidDriver;
+    private final Faker faker = new Faker(new Locale("in-ID"));
+
+    public BasePage(TestContext context) {
+        androidDriver = context.androidDriver;
+        PageFactory.initElements(new AppiumFieldDecorator(androidDriver, Duration.ofSeconds(10)), this);
+    }
+
+    public AndroidDriver getDriver() {
+        return androidDriver;
+    }
+
+    public FluentWait<AndroidDriver> fluentWait() {
+        return new FluentWait<>(getDriver())
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(10))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
+    }
+
+    public Faker getFaker() {
+        return faker;
+    }
+
+    public String getValueAttribute(WebElement webElement, String attributeName) {
+        return webElement.getAttribute(attributeName);
+    }
+}
