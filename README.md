@@ -103,16 +103,6 @@ Refer to your feature files in `src/test/resources/features/` to choose the appr
 - Step definitions are in `src/test/java/steps/`
 - Use the Page Object Model for new screens/pages in `src/main/java/org/saucelabs/pages/`
 
-## Dependencies
-- Appium Java Client
-- Selenium Java
-- Cucumber (Java, TestNG, Picocontainer)
-- TestNG
-- Allure
-- JavaFaker
-
-See `pom.xml` for exact versions.
-
 ## Reporting
 - **Allure**: Rich, interactive test reports (`mvn allure:serve`)
 - **Cucumber**: HTML, XML, and JSON reports in `target/cucumber-report/`
